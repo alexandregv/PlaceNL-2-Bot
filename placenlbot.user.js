@@ -52,7 +52,7 @@ const COLOR_MAPPINGS = {
 	}).showToast();
 	accessToken = await getAccessToken();
 	Toastify({
-		text: 'Accesstoken opgehaald!',
+		text: 'Access token retrieved!',
 		duration: 10000
 	}).showToast();
 
@@ -67,9 +67,9 @@ async function attemptPlace() {
 		const canvasUrl = await getCurrentImageUrl();
 		ctx = await getCanvasFromUrl(canvasUrl);
 	} catch (e) {
-		console.warn('Fout bij ophalen map: ', e);
+		console.warn('Map retrieval error: ', e);
 		Toastify({
-			text: 'Fout bij ophalen map. Opnieuw proberen in 15 sec...',
+			text: 'Error retrieving map. Retry in 15 sec...',
 			duration: 10000
 		}).showToast();
 		setTimeout(attemptPlace, 15000); // probeer opnieuw in 15sec.
@@ -101,7 +101,7 @@ async function attemptPlace() {
 	}
 
 	Toastify({
-		text: 'Alle pixels staan al op de goede plaats!',
+		text: 'All the pixels are already in the right place!',
 		duration: 10000
 	}).showToast();
 	setTimeout(attemptPlace, 30000); // probeer opnieuw in 30sec.
@@ -109,7 +109,7 @@ async function attemptPlace() {
 
 function updateOrders() {
 	fetch('https://raw.githubusercontent.com/alexandregv/Orders/master/orders.json').then(async (response) => {
-		if (!response.ok) return console.warn('Kan orders niet ophalen! (non-ok status code)');
+		if (!response.ok) return console.warn('Cannot retrieve orders! (non-ok status code)');
 		const data = await response.json();
 
 		if (JSON.stringify(data) !== JSON.stringify(placeOrders)) {
@@ -120,7 +120,7 @@ function updateOrders() {
 		}
 
 		placeOrders = data;
-	}).catch((e) => console.warn('Kan orders niet ophalen!', e));
+	}).catch((e) => console.warn('Cannot retrieve orders!', e));
 }
 
 function place(x, y, color) {
