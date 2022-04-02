@@ -47,7 +47,7 @@ const COLOR_MAPPINGS = {
 	canvas = document.body.appendChild(canvas);
 
 	Toastify({
-		text: 'Accesstoken ophalen...',
+		text: 'Access token retrieval...',
 		duration: 10000
 	}).showToast();
 	accessToken = await getAccessToken();
@@ -114,7 +114,7 @@ function updateOrders() {
 
 		if (JSON.stringify(data) !== JSON.stringify(placeOrders)) {
 			Toastify({
-				text: `Nieuwe orders geladen. Totaal aantal pixels: ${data.length}.`,
+				text: `New orders loaded. Total number of pixels: ${data.length}.`,
 				duration: 10000
 			}).showToast();
 		}
