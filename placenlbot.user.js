@@ -87,13 +87,13 @@ async function attemptPlace() {
 		if (currentColorId == colorId) continue;
 
 		Toastify({
-			text: `Pixel proberen te plaatsen op ${x}, ${y}...`,
+			text: `Trying to place pixels at ${x}, ${y}....`,
 			duration: 10000
 		}).showToast();
 		await place(x, y, colorId);
 
 		Toastify({
-			text: `Wachten op cooldown...`,
+			text: `Waiting for cooldown...`,
 			duration: 315000
 		}).showToast();
 		setTimeout(attemptPlace, 315000); // 5min en 15sec, just to be safe.
